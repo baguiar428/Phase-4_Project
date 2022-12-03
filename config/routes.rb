@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # route to test your configuration
-  get '/hello', to: 'application#hello_world'
+  
+  #Test route to make sure cookies and rails are working
+  # get '/hello', to: 'application#hello_world'
+  
 end
