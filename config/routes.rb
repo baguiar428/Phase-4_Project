@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   to: 'fallback#index',
   constraints: ->(req) { !req.xhr? && req.format.html? }
 
+  resources :users, only:[:show, :create]
+
   # Route for login session
   post "/login", to: "sessions#create"
 
