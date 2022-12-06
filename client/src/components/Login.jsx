@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
-function Login() {
+function Login({handleLogin}) {
 
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     })
+
+    const history = useHistory();
 
     function handleChange(e){
         const {name, value} = e.target
@@ -34,6 +37,8 @@ function Login() {
         .then(login => {
             console.log(login)
             sessionStorage.setItem("user_id", login.id)   
+            handleLogin()
+            history.push("/")
         })
 
         //need to make a backend login route and make a post request to it
