@@ -4,28 +4,26 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Signup from './components/Signup'
 import Home from './components/Home'
 import Login from './components/Login';
-import {useState, useEffect, useHistory} from 'react'
+import {useState, useEffect} from 'react'
 import Navbar from './components/Navbar';
 
 
 function App() {
-const [user, setUser] = useState(null)
-const [isLoggedIn, setIsLoggedIn] = useState(false)
+const currentUser = sessionStorage.getItem("user_id")
+const [postData, setPostData] = useState([])
 
 useEffect(() => {
-  setUser(sessionStorage.getItem("user_id"))
 
-  if (user){
-    setIsLoggedIn(true)
 
+  if(sessionStorage.getItem("user_id")){
+    fetch("/posts")
   }
+  
 
-}, [isLoggedIn])
+
+}, [currentUser])
 
 
-const handleLogin = () => {
-  setIsLoggedIn((currentStatus) => !currentStatus)
-}
 // useEffect(() => {
 //   fetch("/me").then((resp) => {
 //     if(resp.ok){
@@ -43,17 +41,14 @@ const handleLogin = () => {
         <Navbar/>
         <Routes>
 
-        <Route exact path="/" element={<Home/>}>
-        </Route>
+        <Route exact path="/" element={<Home/>}/>
 
         {/* <Route exact path="/" element={
         user ? (<Home/>) : (<Login replace to={"/login"} handleLogin={handleLogin}/>)}/>    */}
 
-        <Route path="/login" element={<Login/>} handleLogin={handleLogin}>
-        </Route>
+        <Route path="/login" element={<Login/>}/>
           
-        <Route path="/signup" element={<Signup/>}>
-        </Route>
+        <Route path="/signup" element={<Signup/>}/>
 
         </Routes>
 

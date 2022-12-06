@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 function Login({handleLogin}) {
 
@@ -8,7 +8,7 @@ function Login({handleLogin}) {
         password: ''
     })
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     function handleChange(e){
         const {name, value} = e.target
@@ -37,9 +37,10 @@ function Login({handleLogin}) {
         .then(login => {
             console.log(login)
             sessionStorage.setItem("user_id", login.id)   
-            handleLogin()
-            history.push("/")
+            navigate("/")
         })
+
+       
 
         //need to make a backend login route and make a post request to it
         //then if the response is okay we can push the user to the home page
