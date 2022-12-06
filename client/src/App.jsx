@@ -4,26 +4,58 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Signup from './components/Signup'
 import Home from './components/Home'
 import Login from './components/Login';
+import {useState, useEffect, useHistory} from 'react'
+import Navbar from './components/Navbar';
 
 
 function App() {
+const [user, setUser] = useState(null)
+const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+useEffect(() => {
+  setUser(sessionStorage.getItem("user_id"))
+
+  if (user){
+    setIsLoggedIn(true)
+
+  }
+
+}, [isLoggedIn])
+
+
+const handleLogin = () => {
+  setIsLoggedIn((currentStatus) => !currentStatus)
+}
+// useEffect(() => {
+//   fetch("/me").then((resp) => {
+//     if(resp.ok){
+//       resp.json().then((user) => setUser(user))
+//     }
+//   })
+// }, [])
+
+
+
 
   return (
     <>
       <Router>
+        <Navbar/>
+        <Routes>
 
-      <Routes>
-        <Route path="/login" element={<Login/>}>
+        <Route exact path="/" element={<Home/>}>
         </Route>
-        
+
+        {/* <Route exact path="/" element={
+        user ? (<Home/>) : (<Login replace to={"/login"} handleLogin={handleLogin}/>)}/>    */}
+
+        <Route path="/login" element={<Login/>} handleLogin={handleLogin}>
+        </Route>
+          
         <Route path="/signup" element={<Signup/>}>
         </Route>
 
-        <Route exact path="/" element={<Home/>}>
-          
-        </Route>
-
-      </Routes>
+        </Routes>
 
     </Router>
 

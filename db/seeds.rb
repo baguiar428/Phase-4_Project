@@ -8,5 +8,12 @@
 
 
 User.destroy_all
+Post.destroy_all
 
 User.create(username: "Bruno", password_digest: BCrypt::Password.create('isAwesome'))
+
+
+# 5.times do 
+#     Post.create()
+# end
+
