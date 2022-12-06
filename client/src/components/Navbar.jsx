@@ -9,7 +9,7 @@ function Navbar() {
         <li className="active"><NavLink to="/login">Login</NavLink></li>
         <li className="active"><NavLink to="/users/:id">My Profile</NavLink></li>
       </ul>
-    </nav>
+    </nav> 
   )
 }
 

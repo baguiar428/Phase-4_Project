@@ -1,13 +1,17 @@
 import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function Signup() {
 
     const [formData, setFormData] = useState({
         username: '',
         password: '',
-        email: '',
-        confirmEmail: ''
+        confirmPassword: ''
+        // email: '',
+        // confirmEmail: ''
     })
+
+    const navigate = useNavigate()
 
     function handleChange(e){
         const {name, value} = e.target
@@ -19,12 +23,25 @@ function Signup() {
         const signup = {
             ...formData
         }
-        console.log(signup)
-
-        //need to post the signup to users route
-        //if the response is okay then you can push to the homescreen 
-        //otherwise we through errors
+        if(formData.password === formData.confirmPassword){
+        fetch('/users',{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(signup)
+        })
+        .then(resp => resp.json())
+        .then(user =>{
+            sessionStorage.setItem("user_id", user.id)
+            navigate("/")
+        })
+    }else{
+        alert("Passwords do not match")
     }
+
+    e.target.reset()
+}
 
 
 
@@ -38,7 +55,7 @@ function Signup() {
         </label>
         <input type='text' name='username' value={formData.username} onChange={handleChange}/>
 
-        <label>
+        {/* <label>
             Enter Email
         </label>
         <input type='text' name='email' value={formData.email} onChange={handleChange}/>
@@ -46,12 +63,17 @@ function Signup() {
         <label>
             Confirm Email
         </label>
-        <input type='text' name='confirmEmail' value={formData.confirmEmail} onChange={handleChange}/>
+        <input type='text' name='confirmEmail' value={formData.confirmEmail} onChange={handleChange}/> */}
 
         <label>
             Enter Password
         </label>
         <input type='text' name='password' value={formData.password} onChange={handleChange}/>
+
+        <label>
+            Confirm Password
+        </label>
+        <input type='text' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange}/>
 
         <input type='submit' value='Signup' />
 
