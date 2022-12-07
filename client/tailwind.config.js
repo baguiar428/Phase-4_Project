@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'ethnocentric': ['Ethnocentric']
+        'squids': ['Squids']
       },
     },
   },

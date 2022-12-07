@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Ethnocentric';
-  src: local('Ethnocentric'), url(./fonts/ethnocentric.otf) format('otf');
+  font-family: 'Squids';
+  src: local('Squids'), url(./fonts/squids.ttf) format('truetype');
 }
 
 @layer components {
