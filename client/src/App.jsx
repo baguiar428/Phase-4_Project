@@ -8,17 +8,21 @@ import { useState, useEffect } from 'react'
 function App() {
   const currentUser = sessionStorage.getItem("user_id")
   const [postData, setPostData] = useState([])
+  const [errors, setErrors] = useState(false)
 
   useEffect(() => {
+    fetch('/posts')
+    .then(resp =>{
+      if(resp.ok){
+        resp.json().then(setPostData)
+      }else{
+        resp.json().then(errors => setErrors(errors.error))
+      }
+    })
+  }, [])
 
-
-    if (sessionStorage.getItem("user_id")) {
-      fetch("/posts")
-    }
-
-
-
-  }, [currentUser])
+  console.log(postData)
+  console.log(errors)
 
 
   // useEffect(() => {
@@ -36,7 +40,7 @@ function App() {
     <div className='h-screen bg-gray-700'>
       <Routes>
 
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home posts={postData} />} />
 
         <Route path="/login" element={<Login />} />
 

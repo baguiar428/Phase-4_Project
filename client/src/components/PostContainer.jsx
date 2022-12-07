@@ -1,8 +1,19 @@
 import React from 'react'
+import Post from './Post'
 
-function PostContainer() {
+function PostContainer({posts}) {
+
+  // const [description, flair_id, user_id, created_at, updated_at] = posts
+
+  const eachPost = posts.map(post => <Post key={post.id} post={post} />)
+  
+
+
+
   return (
-    <div>PostContainer</div>
+    <div>PostContainer
+      {eachPost}
+    </div>
   )
 }
 

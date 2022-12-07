@@ -11,6 +11,9 @@ function Signup() {
         // confirmEmail: ''
     })
 
+    const [errors, setErrors] = useState([])
+    // const [misMatch, setMisMatch] = useState("")
+
     const navigate = useNavigate()
 
     function handleChange(e){
@@ -31,24 +34,35 @@ function Signup() {
             },
             body: JSON.stringify(signup)
         })
-        .then(resp => resp.json())
-        .then(user =>{
-            sessionStorage.setItem("user_id", user.id)
-            navigate("/")
-        })
-    }else{
+        .then(resp => {
+            if(resp.ok){
+                resp.json().then(user =>{
+                    sessionStorage.setItem("user_id", user.id)
+                    setErrors([])
+                    navigate("/")})
+            } else{
+                resp.json().then(data => {
+                    console.log("data:", data)
+                    setErrors(data.errors)})
+
+            }
+           
+    })}else{
+        // setMisMatch("Passwords do not match")
         alert("Passwords do not match")
     }
 
     e.target.reset()
 }
 
-
-
+console.log(errors)
+const displayErrors = errors.map(error => <div key={error}> error: {error} </div>)
+console.log(displayErrors)
 
    
   return (
     <>
+    {/* {errors ? ( errors.map(error => <div>{error}</div>)):  */}
     <form onSubmit={handleSubmit}>
         <label>
             Enter Username
@@ -77,6 +91,8 @@ function Signup() {
 
         <input type='submit' value='Signup' />
 
+        {errors ? displayErrors : null}
+        {/* {misMatch} */}
     </form>
     </>
   )
