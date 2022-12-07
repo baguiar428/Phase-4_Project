@@ -4,6 +4,7 @@ import Signup from './components/Signup'
 import Home from './components/Home'
 import Login from './components/Login';
 import { useState, useEffect } from 'react'
+import LoggedOutScreen from './components/LoggedOutScreen';
 
 function App() {
   const currentUser = sessionStorage.getItem("user_id")
@@ -45,6 +46,8 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route path="/signup" element={<Signup />} />
+
+        <Route path="/logout" element={<LoggedOutScreen/>} />
 
       </Routes>
     </div>
