@@ -3,7 +3,6 @@ class ApplicationController < ActionController::API
 
 before_action :authorized
 
-
 rescue_from ActiveRecord::RecordNotFound, with: :request_not_found_response
 rescue_from ActiveRecord::RecordInvalid, with: :request_invalid_response
 

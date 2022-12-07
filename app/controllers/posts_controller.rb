@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    before_action :find_post
-    skip_before_action :index
+    before_action :find_post, only: [:show, :update, :destroy]
+    skip_before_action :authorized, only: [:index, :show]
 
     def index 
         render json: Post.all, status: :ok
@@ -34,5 +34,6 @@ class PostsController < ApplicationController
     def post_params
         params.permit(:description, :flair_id)
     end
+
 
 end
