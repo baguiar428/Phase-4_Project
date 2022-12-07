@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :users, only:[:show, :create]
   resources :posts
+  resources :flairs, only:[:index, :show, :create]
 
   # Route for login session
   post "/login", to: "sessions#create"
