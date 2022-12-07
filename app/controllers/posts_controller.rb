@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+
+    rescue_from ActiveRecord::RecordNotFound, with: :request_not_found_response
+
+
     before_action :find_post, only: [:show, :update, :destroy]
     skip_before_action :authorized, only: [:index, :show]
 
@@ -33,6 +37,10 @@ class PostsController < ApplicationController
 
     def post_params
         params.permit(:description, :flair_id)
+    end
+
+    def request_not_found_response(exception)
+        render json: {error: "#{exception.model} not found"}, status: :not_found
     end
 
 
