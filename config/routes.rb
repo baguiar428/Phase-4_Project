@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   constraints: ->(req) { !req.xhr? && req.format.html? }
 
   resources :users, only:[:show, :create]
+  resources :posts
 
   # Route for login session
   post "/login", to: "sessions#create"

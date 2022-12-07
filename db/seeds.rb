@@ -9,8 +9,36 @@
 
 User.destroy_all
 Post.destroy_all
+Flair.destroy_all
 
 User.create(username: "Bruno", password_digest: BCrypt::Password.create('isAwesome'))
+User.create(username: "User1", password_digest: BCrypt::Password.create('Password1'))
+User.create(username: "User2", password_digest: BCrypt::Password.create('Password2'))
+User.create(username: "User3", password_digest: BCrypt::Password.create('Password3'))
+User.create(username: "User4", password_digest: BCrypt::Password.create('Password4'))
+User.create(username: "User5", password_digest: BCrypt::Password.create('Password5'))
+User.create(username: "User6", password_digest: BCrypt::Password.create('Password6'))
+User.create(username: "User7", password_digest: BCrypt::Password.create('Password7'))
+
+Flair.create(name: "Code Snippet")
+Flair.create(name: "Meme")
+
+Post.create!(description: Faker::Lorem.sentence, flair_id: 1, user_id: 1)
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+
+
+
+
+
 
 
 # 5.times do 
