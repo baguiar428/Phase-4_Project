@@ -33,7 +33,7 @@ function App() {
 
 
   return (
-    <>
+    <div className='h-screen bg-gray-700'>
       <Routes>
 
         <Route path="/" element={<Home />} />
@@ -43,7 +43,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
 
       </Routes>
-    </>
+    </div>
   );
 }
 

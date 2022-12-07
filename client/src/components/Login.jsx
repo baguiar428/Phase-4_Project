@@ -49,13 +49,13 @@ function Login({handleLogin}) {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
-        <label>
+    <form onSubmit={handleSubmit} className="grid place-items-center overflow-hidden grid-cols-none grid-rows-4 gap-4 pt-20">
+        <label className="text-green-400">
             Enter Username
         </label>
         <input type='text' name='username' value={formData.username} onChange={handleChange}/>
 
-        <label>
+        <label className="text-green-400">
             Enter Password
         </label>
         <input type='text' name='password' value={formData.password} onChange={handleChange}/>
