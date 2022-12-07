@@ -60,12 +60,12 @@ function Login() {
   return (
     <>
     <form onSubmit={handleSubmit} className="grid place-items-center overflow-hidden grid-cols-none grid-rows-4 gap-4 pt-20">
-        <label className="text-green-400">
+        <label className="text-green-400 font-ethnocentric">
             Enter Username
         </label>
         <input type='text' name='username' value={formData.username} onChange={handleChange}/>
 
-        <label className="text-green-400">
+        <label className="text-green-400 font-ethnocentric">
             Enter Password
         </label>
         <input type='text' name='password' value={formData.password} onChange={handleChange}/>

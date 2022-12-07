@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :request_not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :request_invalid_response
 
 
     before_action :find_post, only: [:show, :update, :destroy]
@@ -43,5 +44,8 @@ class PostsController < ApplicationController
         render json: {error: "#{exception.model} not found"}, status: :not_found
     end
 
+    def request_invalid_response(exception)
+        render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
+    end
 
 end

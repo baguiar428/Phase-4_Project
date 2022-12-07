@@ -1,6 +1,7 @@
 class FlairsController < ApplicationController
 
 rescue_from ActiveRecord::RecordNotFound, with: :request_not_found_response
+rescue_from ActiveRecord::RecordInvalid, with: :request_invalid_response
 
 before_action :find_flair, only: [:show]
 skip_before_action :authorized, only: [:index, :show, :create]
@@ -31,5 +32,9 @@ end
 def request_not_found_response(exception)
     render json: {error: "#{exception.model} not found"}, status: :not_found
 end 
+
+def request_invalid_response(exception)
+    render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
+end
 
 end
