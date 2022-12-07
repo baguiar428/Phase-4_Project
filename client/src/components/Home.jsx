@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import { MdLogin } from "react-icons/md";
+import { MdLogin, MdPersonAdd} from "react-icons/md";
 
 function Home() {
 
@@ -10,12 +10,15 @@ function Home() {
     navigate('/login');
   }
 
+  function signup() {
+    navigate('/signup')
+  }
+
   return (
     <>
     <div className='flex'>
-      <div onClick={login} className="flex-1">
-        <PageIcon icon={<MdLogin size="140"/>}/>
-      </div>
+      <a onClick={login}><PageIcon icon={<MdLogin size="40"/>}/></a>
+      <a onClick={signup}><PageIcon icon={<MdPersonAdd size="40"/>}/></a>
     </div>
     </>
   )
