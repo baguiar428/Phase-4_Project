@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
-function Login({handleLogin}) {
+function Login() {
 
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     })
 
+    const [error, setErrors] = useState([])
     const navigate = useNavigate();
 
     function handleChange(e){
@@ -33,19 +34,28 @@ function Login({handleLogin}) {
             },
             body: JSON.stringify(login)
         })
-        .then(resp => resp.json())
-        .then(login => {
-            console.log(login)
-            sessionStorage.setItem("user_id", login.id)   
-            navigate("/")
-        })
-
-       
-
-        //need to make a backend login route and make a post request to it
-        //then if the response is okay we can push the user to the home page
-        //otherwise we through errors
+        .then(resp =>{
+            if (resp.ok){
+                resp.json().then(user =>{
+                    sessionStorage.setItem("user_id", user.id)
+                    setErrors([])
+                    navigate("/")})
+                }else{
+                    resp.json().then(data => {
+                        //data returns an object with an error key
+                        //that error key has an object with a login
+                        //key. That login key has the error string
+                        console.log("data:", data)
+                        console.log("data:", data.error)
+                        console.log("data:", data.error.login)
+                        setErrors(data.error.login)})
+                }
+            }
+        )
     }
+
+// const displayErrors = errors.map(error => <div key={error}> error: {error} </div>)
+
 
   return (
     <>
@@ -62,9 +72,13 @@ function Login({handleLogin}) {
 
         <input type='submit' value='Login' />
 
+        {error ? error : null}
+
+
     </form>
     </>
   )
 }
+
 
 export default Login
