@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  rescue_from ActiveRecord::RecordInvalid, with: :request_invalid_response
     skip_before_action :authorized, only: [:create]
 
     def create
@@ -20,5 +20,9 @@ class UsersController < ApplicationController
 
     def user_params
         params.permit(:username, :password)
+    end
+
+    def request_invalid_response(exception)
+      render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
     end
 end

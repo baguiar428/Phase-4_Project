@@ -1,8 +1,9 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import { MdLogin, MdPersonAdd} from "react-icons/md";
+import PostContainer from "./PostContainer"
 
-function Home() {
+function Home({posts}) {
 
   const navigate = useNavigate();
 
@@ -20,6 +21,9 @@ function Home() {
       <a onClick={login}><PageIcon icon={<MdLogin size="40"/>}/></a>
       <a onClick={signup}><PageIcon icon={<MdPersonAdd size="40"/>}/></a>
     </div>
+    
+    <PostContainer posts={posts}/>
+
     </>
   )
 }
