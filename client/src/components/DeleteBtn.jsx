@@ -1,21 +1,24 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
 
 
-function DeleteBtn({post}) {
+function DeleteBtn({ post, setPostData }) {
 
-  const {id} = post
+  const { id } = post
 
-  function deletePost() {
-    fetch(`/posts/${id}`, {
-    method: 'DELETE'})
-    // .then(res => res.json())
-    .then(console.log("Deleted"))
-    }
+  async function deletePost() {
+    await fetch(`/posts/${id}`, {
+      method: 'DELETE'
+    })
+    await fetch('/posts')
+      .then(resp => resp.json())
+      .then(resp => setPostData(resp))
+  }
 
   return (
     <div onClick={deletePost} post={post}>Delete</div>
   )
+
 }
 
 export default DeleteBtn
+

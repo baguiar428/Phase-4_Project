@@ -23,27 +23,12 @@ function App() {
       }
     })
   }, [])
-
-  console.log(postData)
-  console.log(errors)
-
-
-  // useEffect(() => {
-  //   fetch("/me").then((resp) => {
-  //     if(resp.ok){
-  //       resp.json().then((user) => setUser(user))
-  //     }
-  //   })
-  // }, [])
-
-
-
-
+  
   return (
     <div className='h-screen bg-gray-700'>
       <Routes>
 
-        <Route path="/" element={<Home posts={postData} />} />
+        <Route path="/" element={<Home posts={postData} setPostData={setPostData} />} />
 
         <Route path="/login" element={<Login />} />
 

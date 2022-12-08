@@ -2,7 +2,7 @@ import React from 'react'
 import EditBtn from './EditBtn'
 import DeleteBtn from './DeleteBtn'
 
-function Post({post}) {
+function Post({post, setPostData}) {
 
   const {id, description, flair_id, user_id, created_at, updated_at} = post 
   
@@ -11,7 +11,7 @@ function Post({post}) {
   
   if(parseInt(sessionStorage.getItem("user_id"), 10) === user_id){
     editBtn = <EditBtn post={post}/>
-    deleteBtn = <DeleteBtn post={post}/>
+    deleteBtn = <DeleteBtn post={post} setPostData={setPostData}/>
   }
 
     return (
