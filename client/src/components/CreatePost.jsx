@@ -31,7 +31,7 @@ function CreatePost() {
       body: JSON.stringify(post)
     })
     .then(res =>)
-  }
+
 
   return (
     <>
@@ -41,7 +41,7 @@ function CreatePost() {
         type='text' name='description' 
         value={postData.description} 
         onChange={handleChange}/>
-      <
+      
     </form>
     </>
   )
