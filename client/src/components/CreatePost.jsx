@@ -2,13 +2,13 @@ import React, {useState} from 'react'
 import { useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
 
-function CreatePost() {
+function CreatePost({postData, setPostData}) {
 
   const currentUser = sessionStorage.getItem("user_id")
 
   const navigate = useNavigate();
 
-  const [postData, setPostData] = useState({
+  const [formData, setFormData] = useState({
     description: '',
     flair_id: '' ,
     user_id: currentUser
@@ -20,18 +20,18 @@ function CreatePost() {
 
   function handleChange(e) {
     const {name, value} = e.target
-    setPostData({...postData, [name]: value})
+    setFormData({...formData, [name]: value})
   }
 
   function handleSelectChange(e){
-    setPostData({...postData, flair_id: e.target.value})
+    setFormData({...formData, flair_id: e.target.value})
   }
   
 
   function handleSubmit(e){
     e.preventDefault()
     const post = {
-      ...postData
+      ...formData
     }
 
     fetch('/posts', {
@@ -43,6 +43,7 @@ function CreatePost() {
     })
     .then(res =>{
       if(res.ok){
+        setPostData([...postData, post])
         res.json().then(navigate('/'))
       }else{
         res.json().then(data => {
@@ -76,7 +77,7 @@ return <option key={flair.id} value={flair.id}>{flair.name}</option>
       <label>Description</label>
       <input 
         type='text' name='description' 
-        value={postData.description} 
+        value={formData.description} 
         onChange={handleChange}/>
       <label>Select a Flair:</label>
 

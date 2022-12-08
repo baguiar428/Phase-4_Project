@@ -24,6 +24,10 @@ function App() {
     })
   }, [])
 
+  useEffect(() => {
+    console.log("Post data has been altered")
+  },[postData])
+
   console.log(postData)
   console.log(errors)
 
@@ -53,7 +57,7 @@ function App() {
 
         <Route path="/edit-post" element={<EditPostForm/>} />
 
-        <Route path="/create-post" element={<CreatePost/>} />
+        <Route path="/create-post" element={<CreatePost postData={postData} setPostData={setPostData}/>} />
       </Routes>
     </div>
   );
