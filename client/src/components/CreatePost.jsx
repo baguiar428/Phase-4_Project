@@ -28,13 +28,13 @@ function CreatePost({postData, setPostData}) {
   }
   
 
-  function handleSubmit(e){
+  async function handleSubmit(e){
     e.preventDefault()
     const post = {
       ...formData
     }
 
-    fetch('/posts', {
+    await fetch('/posts', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -43,13 +43,21 @@ function CreatePost({postData, setPostData}) {
     })
     .then(res =>{
       if(res.ok){
-        setPostData([...postData, post])
-        res.json().then(navigate('/'))
+        // setPostData([...postData, post])
+        // res.json().then(navigate('/'))
+        console.log("Post Added")
       }else{
         res.json().then(data => {
           console.log("Errors: ", data)
         })
       }
+    })
+
+    await fetch('/posts')
+    .then(resp => resp.json())
+    .then(resp => {
+      setPostData(resp)
+      navigate('/')
     })
   }
 
