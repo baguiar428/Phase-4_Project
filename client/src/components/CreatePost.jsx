@@ -81,7 +81,7 @@ return <option key={flair.id} value={flair.id}>{flair.name}</option>
       <label>Select a Flair:</label>
 
       <select onChange={handleSelectChange}>
-
+        <option value={null}>----</option>
         {displayFlairsOnDropDown}
 
       </select>
