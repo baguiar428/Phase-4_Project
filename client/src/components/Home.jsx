@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import { MdLogin, MdPersonAdd, MdLogout} from "react-icons/md";
+import { MdLogin, MdPersonAdd, MdLogout, MdCreate} from "react-icons/md";
 import PostContainer from "./PostContainer"
 import { useEffect } from 'react';
 
@@ -27,14 +27,27 @@ function Home({posts}) {
 
   }
 
+  function createPost(){
+  if(sessionStorage.getItem("user_id")){
+    navigate('/create-post')
+  }else{
+    navigate('/login')
+  }
+  }
+
   const isLoggedIn = sessionStorage.getItem("user_id") ? 
   <a onClick={handleLogout}><PageIcon icon={<MdLogout size="40"/>}/></a> :
   <a onClick={login}><PageIcon icon={<MdLogin size="40"/>}/></a>
+
+  // const canCreatePost = sessionStorage.getItem("user_id") ?
+  
+  
 
   return (
     <>
     <div className='flex'>
       {isLoggedIn}
+      <a onClick={createPost}><PageIcon icon={<MdCreate size="40"/>}/></a>
       <a onClick={signup}><PageIcon icon={<MdPersonAdd size="40"/>}/></a>
     </div>
     
