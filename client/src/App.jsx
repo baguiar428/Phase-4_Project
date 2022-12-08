@@ -47,7 +47,7 @@ function App() {
     <div className='h-screen bg-gray-700'>
       <Routes>
 
-        <Route path="/" element={<Home posts={postData} />} />
+        <Route path="/" element={<Home posts={postData} setPostData={setPostData} />} />
 
         <Route path="/login" element={<Login />} />
 
