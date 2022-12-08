@@ -70,7 +70,7 @@ function Login() {
         </label>
         <input type='text' name='password' value={formData.password} onChange={handleChange}/>
 
-        <input type='submit' value='Login' />
+        <input className="font-squids" type='submit' value='Login' />
 
         {error ? error : null}
 
