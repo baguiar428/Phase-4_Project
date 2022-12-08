@@ -13,7 +13,7 @@ Flair.destroy_all
 
 #User Salman has a password of SalmansPassword
 
-User.create(username: "Bruno", password_digest: BCrypt::Password.create('isAwesome'))
+
 User.create(username: "User1", password_digest: BCrypt::Password.create('Password1'))
 User.create(username: "User2", password_digest: BCrypt::Password.create('Password2'))
 User.create(username: "User3", password_digest: BCrypt::Password.create('Password3'))
