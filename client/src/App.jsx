@@ -6,6 +6,7 @@ import Login from './components/Login';
 import { useState, useEffect } from 'react'
 import LoggedOutScreen from './components/LoggedOutScreen';
 import EditPostForm from './components/EditPostForm';
+import CreatePost from './components/CreatePost'
 
 function App() {
   const currentUser = sessionStorage.getItem("user_id")
@@ -51,6 +52,8 @@ function App() {
         <Route path="/logout" element={<LoggedOutScreen/>} />
 
         <Route path="/edit-post" element={<EditPostForm/>} />
+
+        <Route path="/create-post" element={<CreatePost/>} />
       </Routes>
     </div>
   );
