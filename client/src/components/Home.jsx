@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
 import { MdLogin, MdPersonAdd, MdLogout} from "react-icons/md";
 import PostContainer from "./PostContainer"
-import { useEffect } from 'react';
 
 function Home({posts}) {
+
+  const [postsArray, setPostsArray] = useState([]);
+
 
   const navigate = useNavigate();
 
@@ -38,7 +40,7 @@ function Home({posts}) {
       <a onClick={signup}><PageIcon icon={<MdPersonAdd size="40"/>}/></a>
     </div>
     
-    <PostContainer posts={posts}/>
+    <PostContainer posts={posts} changePosts={setPostsArray}/>
 
     </>
   )
