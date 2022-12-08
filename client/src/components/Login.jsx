@@ -56,6 +56,11 @@ function Login() {
 
 // const displayErrors = errors.map(error => <div key={error}> error: {error} </div>)
 
+function goToSignup(){
+    navigate('/signup')
+}
+
+
 
   return (
     <>
@@ -73,6 +78,8 @@ function Login() {
         <input className="font-squids" type='submit' value='Login' />
 
         {error ? error : null}
+
+        <a onClick={goToSignup}>Signup</a>
 
 
     </form>
