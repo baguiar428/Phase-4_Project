@@ -8,8 +8,8 @@
 
 
 User.destroy_all
-Post.destroy_all
 Flair.destroy_all
+Post.destroy_all
 
 #User Salman has a password of SalmansPassword
 
