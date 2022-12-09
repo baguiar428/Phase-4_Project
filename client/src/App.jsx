@@ -10,7 +10,7 @@ import CreatePost from './components/CreatePost'
 import NavBar from './components/NavBar';
 
 function App() {
-  const currentUser = sessionStorage.getItem("user_id")
+  const loginStatus = sessionStorage.getItem("user_id")
   const [postData, setPostData] = useState([])
   const [errors, setErrors] = useState(false)
 
