@@ -37,9 +37,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        # Working line - Test
-        # params.permit(:description, :flair_id, :user_id)
-        params.permit(:description)
+        params.permit(:description, :flair_id, :user_id)
     end
 
     def request_not_found_response(exception)
