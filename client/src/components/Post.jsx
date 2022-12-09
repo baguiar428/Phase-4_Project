@@ -18,8 +18,8 @@ function Post({post, setPostData}) {
     <div className='grid place-items-center border-solid border-2 border-sky-500 m-2 p-2'>
     <div>Post {id}</div>
     <h3>{description}</h3>
-    <h3>flair_id {flair_id}</h3>
-    <h3>user_id {user_id}</h3>
+    <h3>flair_id {post.flair.name}</h3>
+    <h3>user_id {post.user.username}</h3>
     <h3>created_at {created_at}</h3>
     <h3>updated_at {updated_at}</h3>
     {editBtn}
