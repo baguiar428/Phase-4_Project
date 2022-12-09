@@ -55,7 +55,7 @@ function App() {
 
         <Route path="/logout" element={<LoggedOutScreen/>} />
 
-        <Route path="/edit-post" element={<EditPostForm/>} />
+        <Route path="/edit-post" element={<EditPostForm setPostData={setPostData}/>} />
 
         <Route path="/create-post" element={<CreatePost postData={postData} setPostData={setPostData}/>} />
       </Routes>

@@ -10,7 +10,7 @@ function Post({post, setPostData}) {
   let deleteBtn
   
   if(parseInt(sessionStorage.getItem("user_id"), 10) === user_id){
-    editBtn = <EditBtn post={post}/>
+    editBtn = <EditBtn post={post} setPostData={setPostData}/>
     deleteBtn = <DeleteBtn post={post} setPostData={setPostData}/>
   }
 

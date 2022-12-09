@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
 
     before_action :find_post, only: [:show, :update, :destroy]
-    skip_before_action :authorized, only: [:index, :show, :destroy, :create]
+    skip_before_action :authorized, only: [:index, :show, :destroy, :create, :update]
 
     def index 
         render json: Post.all, status: :ok
