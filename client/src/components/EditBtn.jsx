@@ -1,13 +1,13 @@
 import React from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 // import Post from './Post'
 
-function EditBtn({post}) {
+function EditBtn({post, setPostData}) {
   const navigate = useNavigate()
   
   function edit(){
     // console.log(post)
-    navigate('/edit-post')
+    navigate('/edit-post', {state: {post: post}})
   }
 
   return (
