@@ -28,13 +28,13 @@ function NavBar({ isLoggedIn }) {
     const signupHome = <button className='font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={signup}>Sign-Up</button>
 
     const isLoggedInHome = sessionStorage.getItem("user_id") ? 
-    <button className='font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={handleLogout}>Logout</button>
-    : <button className='font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={login}>Login</button>
+    <button className='font-squids m-4 mt-10 p-2 h-12 rounded-lg bg-red-500 hover:bg-green-500' onClick={handleLogout}>Logout</button>
+    : <button className='font-squids m-4 mt-10 p-2 h-12 rounded-lg bg-red-500 hover:bg-green-500' onClick={login}>Login</button>
 
     return (
         <div>
             <div className="flex justify-end ">
-                <h1 className="font-squids text-8xl text-green-500 flex-auto">/Dev/Null</h1>
+                <h1 className="font-squids text-8xl text-green-500 flex-auto pt-8 pl-4">/Dev/Null</h1>
                 {isLoggedInHome}
             </div>
         </div>
