@@ -25,25 +25,20 @@ User.create(username: "User7", password_digest: BCrypt::Password.create('Passwor
 Flair.create(name: "Code Snippet")
 Flair.create(name: "Meme")
 
-Post.create!(description: Faker::Lorem.sentence, flair_id: 1, user_id: 1)
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
-Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+# Post.create!(description: Faker::Lorem.sentence, flair_id: 1, user_id: 1)
+# Post.create!(description: Faker::Lorem.sentence, flair_id: Flair.all.ids.sample, user_id: User.all.ids.sample)
+# Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+# Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+# Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+# Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+# Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+# Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+# Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+# Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
+# Post.create!(description: Faker::Lorem.sentence, flair_id: rand(1..2), user_id: rand(1..7))
 
 
-
-
-
-
-
-# 5.times do 
-#     Post.create()
-# end
+10.times do 
+      Post.create!(description: Faker::Lorem.sentence, flair_id: Flair.all.ids.sample, user_id: User.all.ids.sample)
+end
 

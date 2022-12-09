@@ -33,7 +33,8 @@ function NavBar({ isLoggedIn }) {
 
     return (
         <div>
-            <div className="flex justify-end">
+            <div className="flex justify-end ">
+                <h1 className="font-squids text-8xl text-green-500 flex-auto">/Dev/Null</h1>
                 {isLoggedInHome}
             </div>
         </div>
