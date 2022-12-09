@@ -81,13 +81,13 @@ return <option key={flair.id} value={flair.id}>{flair.name}</option>
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
-      <label>Description</label>
+    <form onSubmit={handleSubmit} className="grid place-items-center overflow-hidden grid-cols-none grid-rows-5 gap-4 pt-20">
+      <label className="text-green-400 font-squids">Description</label>
       <input 
         type='text' name='description' 
         value={formData.description} 
         onChange={handleChange}/>
-      <label>Select a Flair:</label>
+      <label className="text-green-400 font-squids">Select a Flair:</label>
 
       <select onChange={handleSelectChange}>
         <option value={null}>----</option>
@@ -95,7 +95,7 @@ return <option key={flair.id} value={flair.id}>{flair.name}</option>
 
       </select>
 
-      <input type="submit" value='Create Post' />
+      <input className="font-squids px-2 rounded-lg bg-red-500 hover:bg-green-500" type="submit" value='Create Post' />
       
     </form>
     </>

@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import LoggedOutScreen from './components/LoggedOutScreen';
 import EditPostForm from './components/EditPostForm';
 import CreatePost from './components/CreatePost'
+import NavBar from './components/NavBar';
 
 function App() {
   const currentUser = sessionStorage.getItem("user_id")
@@ -44,7 +45,8 @@ function App() {
 
 
   return (
-    <div className='h-screen bg-gray-700'>
+    <div className='h-full min-h-screen bg-gray-700'>
+      <NavBar/>
       <Routes>
 
         <Route path="/" element={<Home posts={postData} setPostData={setPostData} />} />

@@ -15,7 +15,7 @@ function Post({post, setPostData}) {
   }
 
     return (
-    <>
+    <div className='grid place-items-center border-solid border-2 border-sky-500 m-2 p-2'>
     <div>Post {id}</div>
     <h3>{description}</h3>
     <h3>flair_id {flair_id}</h3>
@@ -24,9 +24,7 @@ function Post({post, setPostData}) {
     <h3>updated_at {updated_at}</h3>
     {editBtn}
     {deleteBtn}
-    <h3>--------------------------------</h3>
-
-    </>
+    </div>
   )
 }
 

@@ -17,6 +17,12 @@
     transition-all duration-300 ease-linear
     cursor-pointer;
   }
+
+  .nav-button {
+    @apply relative flex font-squids 
+    m-4 p-2 rounded-lg 
+    bg-red-500 hover:bg-green-500
+  }
 }
 
 /* Original CSS Code Generated with project */

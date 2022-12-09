@@ -63,33 +63,23 @@ console.log(displayErrors)
   return (
     <>
     {/* {errors ? ( errors.map(error => <div>{error}</div>)):  */}
-    <form onSubmit={handleSubmit}>
-        <label>
+    <form onSubmit={handleSubmit} className='grid place-items-center overflow-hidden grid-cols-none grid-rows-7 gap-4 pt-20"'>
+        <label className="text-green-400 font-squids">
             Enter Username
         </label>
         <input type='text' name='username' value={formData.username} onChange={handleChange}/>
 
-        {/* <label>
-            Enter Email
-        </label>
-        <input type='text' name='email' value={formData.email} onChange={handleChange}/>
-
-        <label>
-            Confirm Email
-        </label>
-        <input type='text' name='confirmEmail' value={formData.confirmEmail} onChange={handleChange}/> */}
-
-        <label>
+        <label className="text-green-400 font-squids">
             Enter Password
         </label>
-        <input type='text' name='password' value={formData.password} onChange={handleChange}/>
+        <input type='password' name='password' value={formData.password} onChange={handleChange}/>
 
-        <label>
+        <label className="text-green-400 font-squids">
             Confirm Password
         </label>
-        <input type='text' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange}/>
+        <input type='password' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange}/>
 
-        <input type='submit' value='Signup' />
+        <input className="font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500" type='submit' value='Sign-up' />
 
         {errors ? displayErrors : null}
         {/* {misMatch} */}

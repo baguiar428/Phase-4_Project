@@ -17,7 +17,7 @@ function PostContainer({posts, setPostData}) {
 
 
   return (
-    <div>PostContainer
+    <div>
       {eachPost}
     </div>
   )

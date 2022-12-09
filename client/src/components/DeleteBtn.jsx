@@ -15,7 +15,8 @@ function DeleteBtn({ post, setPostData }) {
   }
 
   return (
-    <div onClick={deletePost} post={post}>Delete</div>
+    // <div onClick={deletePost} post={post}>Delete</div>
+    <button className='font-squids m-1 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={deletePost} post={post}>Delete</button>
   )
 
 }

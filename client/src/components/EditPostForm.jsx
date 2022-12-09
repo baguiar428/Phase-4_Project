@@ -64,8 +64,7 @@ function EditPostForm({setPostData}) {
             Flair
         </label>
         <input type='text' name='flair_id' value={formData.flair} onChange={handleChange}/>
-
-        <input className="font-squids" type='submit' value='Edit' />
+        <input className="font-squids px-2 rounded-lg bg-red-500 hover:bg-green-500" type='submit' value='Edit' />
 
     </form>
     </>

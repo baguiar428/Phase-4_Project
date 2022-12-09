@@ -12,7 +12,8 @@ function EditBtn({post, setPostData}) {
   return (
     <>
     {console.log(post)}
-    <div onClick={edit} post={post} >EditBtn</div>
+    {/* <div onClick={edit} post={post} >EditBtn</div> */}
+    <button className='font-squids m-1 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={edit} post={post}>Edit</button>
     </>
   )
 }

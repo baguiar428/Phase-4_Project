@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
 
@@ -11,16 +11,12 @@ function Login() {
     const [error, setErrors] = useState([])
     const navigate = useNavigate();
 
-    function handleChange(e){
-        const {name, value} = e.target
-        setFormData({...formData, [name]: value})
+    function handleChange(e) {
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
     }
 
-    // console.log(formData)
-
-    
-
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault()
         const login = {
             ...formData
@@ -34,13 +30,14 @@ function Login() {
             },
             body: JSON.stringify(login)
         })
-        .then(resp =>{
-            if (resp.ok){
-                resp.json().then(user =>{
-                    sessionStorage.setItem("user_id", user.id)
-                    setErrors([])
-                    navigate("/")})
-                }else{
+            .then(resp => {
+                if (resp.ok) {
+                    resp.json().then(user => {
+                        sessionStorage.setItem("user_id", user.id)
+                        setErrors([])
+                        navigate("/")
+                    })
+                } else {
                     resp.json().then(data => {
                         //data returns an object with an error key
                         //that error key has an object with a login
@@ -48,43 +45,43 @@ function Login() {
                         console.log("data:", data)
                         console.log("data:", data.error)
                         console.log("data:", data.error.login)
-                        setErrors(data.error.login)})
+                        setErrors(data.error.login)
+                    })
                 }
             }
-        )
+            )
     }
 
-// const displayErrors = errors.map(error => <div key={error}> error: {error} </div>)
-
-function goToSignup(){
-    navigate('/signup')
-}
-
+    //Not needed once I get condition rendering in nav
+    // function goToSignup() {
+    //     navigate('/signup')
+    // }
 
 
-  return (
-    <>
-    <form onSubmit={handleSubmit} className="grid place-items-center overflow-hidden grid-cols-none grid-rows-4 gap-4 pt-20">
-        <label className="text-green-400 font-squids">
-            Enter Username
-        </label>
-        <input type='text' name='username' value={formData.username} onChange={handleChange}/>
 
-        <label className="text-green-400 font-squids">
-            Enter Password
-        </label>
-        <input type='text' name='password' value={formData.password} onChange={handleChange}/>
+    return (
+        <>
+            <form onSubmit={handleSubmit} className="grid place-items-center overflow-hidden grid-cols-none grid-rows-4 gap-4 pt-20">
+                <label className="text-green-400 font-squids">
+                    Enter Username
+                </label>
+                <input type='text' name='username' value={formData.username} onChange={handleChange} />
 
-        <input className="font-squids" type='submit' value='Login' />
+                <label className="text-green-400 font-squids">
+                    Enter Password
+                </label>
+                <input type='password' name='password' value={formData.password} onChange={handleChange} />
 
-        {error ? error : null}
+                <input className="font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500" type='submit' value='Login' />
+                
+                {/* Not sure if needed */}
+                {/* {error ? error : null} */}
 
-        <a onClick={goToSignup}>Signup</a>
 
 
-    </form>
-    </>
-  )
+            </form>
+        </>
+    )
 }
 
 
