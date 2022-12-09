@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 
 function DeleteBtn({ post, setPostData }) {
@@ -21,4 +21,3 @@ function DeleteBtn({ post, setPostData }) {
 }
 
 export default DeleteBtn
-
