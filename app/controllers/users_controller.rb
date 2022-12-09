@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :request_invalid_response
   rescue_from ActiveRecord::RecordNotFound, with: :request_not_found_response
 
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:index, :create, :user_posts]
+
+    def index
+      render json: User.all, status: :ok
+    end
 
     def create
         user = User.create!(user_params)
@@ -16,6 +20,11 @@ class UsersController < ApplicationController
         else
           render json: { error: "Not authorized" }, status: :unauthorized
         end
+    end
+
+    def user_posts 
+      user = User.find(params[:id])
+      render json: user.posts, status: :ok
     end
 
     private

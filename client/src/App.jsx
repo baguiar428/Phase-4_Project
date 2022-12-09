@@ -8,6 +8,7 @@ import LoggedOutScreen from './components/LoggedOutScreen';
 import EditPostForm from './components/EditPostForm';
 import CreatePost from './components/CreatePost'
 import NavBar from './components/NavBar';
+import UserProfile from './components/UserProfile';
 
 function App() {
   const loginStatus = sessionStorage.getItem("user_id")
@@ -60,6 +61,8 @@ function App() {
         <Route path="/edit-post" element={<EditPostForm setPostData={setPostData}/>} />
 
         <Route path="/create-post" element={<CreatePost postData={postData} setPostData={setPostData}/>} />
+
+        <Route path="/my-profile" element={<UserProfile />} />
       </Routes>
     </div>
   );

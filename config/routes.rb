@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   to: 'fallback#index',
   constraints: ->(req) { !req.xhr? && req.format.html? }
 
-  resources :users, only:[:show, :create]
+  resources :users, only:[:index, :show, :create]
   resources :posts
   resources :flairs, only:[:index, :show, :create]
 
@@ -28,5 +28,7 @@ Rails.application.routes.draw do
 
   #Route for logging out
   delete "/logout", to: "sessions#destroy"
+
+  get "users/:id/posts", to: "users#user_posts"
 
 end
