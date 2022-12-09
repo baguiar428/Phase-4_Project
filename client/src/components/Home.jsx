@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
-import { MdLogin, MdLogout, MdCreate} from "react-icons/md";
+import { MdLogin, MdLogout, MdCreate, MdPerson } from "react-icons/md";
 import PostContainer from "./PostContainer"
 
 function Home({posts, setPostData}) {
@@ -26,6 +26,10 @@ function Home({posts, setPostData}) {
 
   }
 
+  function userProfile(){
+    navigate('my-profile')
+  }
+
   function createPost(){
   if(sessionStorage.getItem("user_id")){
     navigate('/create-post')
@@ -47,6 +51,7 @@ function Home({posts, setPostData}) {
     <div className='flex'>
       {isLoggedIn}
       <a onClick={createPost}><PageIcon icon={<MdCreate size="40"/>}/></a>
+      <a onClick={userProfile}><PageIcon icon={<MdPerson size="40"/>}/></a>
     </div>
     
     <PostContainer posts={posts} setPostData={setPostData}/>
