@@ -11,7 +11,7 @@ import NavBar from './components/NavBar';
 import UserProfile from './components/UserProfile';
 
 function App() {
-  const currentUser = sessionStorage.getItem("user_id")
+  const loginStatus = sessionStorage.getItem("user_id")
   const [postData, setPostData] = useState([])
   const [errors, setErrors] = useState(false)
 

@@ -52,11 +52,9 @@ function Login() {
             )
     }
 
-    //Not needed once I get condition rendering in nav
-    // function goToSignup() {
-    //     navigate('/signup')
-    // }
-
+    function goToSignup() {
+        navigate('/signup')
+    }
 
 
     return (
@@ -73,9 +71,9 @@ function Login() {
                 <input type='password' name='password' value={formData.password} onChange={handleChange} />
 
                 <input className="font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500" type='submit' value='Login' />
+                <button className='font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={goToSignup}>Sign-Up</button>
                 
-                {/* Not sure if needed */}
-                {/* {error ? error : null} */}
+                {error ? error : null}
 
 
 

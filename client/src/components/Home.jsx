@@ -8,23 +8,23 @@ function Home({posts, setPostData}) {
   const navigate = useNavigate();
 
 
-  function login() {
-    navigate('/login');
-  }
+  // function login() {
+  //   navigate('/login');
+  // }
 
-  function signup() {
-    navigate('/signup')
-  }
+  // function signup() {
+  //   navigate('/signup')
+  // }
 
-  function handleLogout(){
-    fetch('/logout', {
-      method: 'DELETE'
-    })
-    .then(() => sessionStorage.clear())
+  // function handleLogout(){
+  //   fetch('/logout', {
+  //     method: 'DELETE'
+  //   })
+  //   .then(() => sessionStorage.clear())
 
-    navigate('/logout')
+  //   navigate('/logout')
 
-  }
+  // }
 
   function userProfile(){
     navigate('my-profile')
@@ -39,10 +39,8 @@ function Home({posts, setPostData}) {
   }
 
   const isLoggedIn = sessionStorage.getItem("user_id") ? 
-  <a onClick={handleLogout}><PageIcon icon={<MdLogout size="40"/>}/></a> :
-  <a onClick={login}><PageIcon icon={<MdLogin size="40"/>}/></a>
-
-  // const canCreatePost = sessionStorage.getItem("user_id") ?
+  <a onClick={createPost}><PageIcon icon={<MdCreate size="40"/>}/></a> 
+  : null
   
   
 
@@ -52,6 +50,7 @@ function Home({posts, setPostData}) {
       {isLoggedIn}
       <a onClick={createPost}><PageIcon icon={<MdCreate size="40"/>}/></a>
       <a onClick={userProfile}><PageIcon icon={<MdPerson size="40"/>}/></a>
+
     </div>
     
     <PostContainer posts={posts} setPostData={setPostData}/>
