@@ -31,4 +31,7 @@ Rails.application.routes.draw do
 
   get "users/:id/posts", to: "users#user_posts"
 
+  # Testing
+  get "/search/:username", to: "users#search"
+
 end

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :request_invalid_response
   rescue_from ActiveRecord::RecordNotFound, with: :request_not_found_response
 
-    skip_before_action :authorized, only: [:index, :create, :show, :user_posts]
+    skip_before_action :authorized, only: [:index, :create, :show, :user_posts, :search]
 
     def index
       render json: User.all, status: :ok
@@ -20,6 +20,11 @@ class UsersController < ApplicationController
         else
          render json: { error: "Not authorized" }, status: :unauthorized
         end
+    end
+
+    def search
+      user = User.find_by(username: params[:username])
+      render json: user.posts, status: :ok
     end
 
     def user_posts 

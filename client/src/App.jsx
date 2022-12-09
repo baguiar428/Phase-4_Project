@@ -9,6 +9,7 @@ import EditPostForm from './components/EditPostForm';
 import CreatePost from './components/CreatePost'
 import NavBar from './components/NavBar';
 import UserProfile from './components/UserProfile';
+import UserSearch from './components/UserSearch';
 
 function App() {
   const loginStatus = sessionStorage.getItem("user_id")
@@ -63,6 +64,8 @@ function App() {
         <Route path="/create-post" element={<CreatePost postData={postData} setPostData={setPostData}/>} />
 
         <Route path="/my-profile" element={<UserProfile postData={postData} setPostData={setPostData}/>} />
+      
+        <Route path="/user-search" element={<UserSearch postData={postData} setPostData={setPostData}/>} />
       </Routes>
     </div>
   );
