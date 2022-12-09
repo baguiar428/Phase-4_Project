@@ -41,15 +41,19 @@ function Home({posts, setPostData}) {
   const isLoggedIn = sessionStorage.getItem("user_id") ? 
   <a onClick={createPost}><PageIcon icon={<MdCreate size="40"/>}/></a> 
   : null
-  
+
+  const displayProfile = sessionStorage.getItem("user_id") ? 
+  <a onClick={userProfile}><PageIcon icon={<MdPerson size="40"/>}/></a> : null
+
   
 
   return (
     <>
     <div className='flex'>
       {isLoggedIn}
-      <a onClick={createPost}><PageIcon icon={<MdCreate size="40"/>}/></a>
-      <a onClick={userProfile}><PageIcon icon={<MdPerson size="40"/>}/></a>
+      {displayProfile}
+      {/* <a onClick={createPost}><PageIcon icon={<MdCreate size="40"/>}/></a> */}
+      {/* <a onClick={userProfile}><PageIcon icon={<MdPerson size="40"/>}/></a> */}
 
     </div>
     
