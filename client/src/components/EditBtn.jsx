@@ -1,6 +1,5 @@
 import React from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
-// import Post from './Post'
+import { useNavigate } from 'react-router-dom'
 
 function EditBtn({post}) {
   const navigate = useNavigate()
