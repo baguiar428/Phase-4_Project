@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Post from './Post'
 import { MdHomeFilled } from "react-icons/md"
 
-function UserProfile() {
+function UserProfile({postData, setPostData}) {
   const currentUser = parseInt(sessionStorage.getItem("user_id"))
   const [userPosts, setUserPosts] = useState([])
   const navigate = useNavigate()
@@ -12,14 +12,14 @@ function UserProfile() {
   useEffect(() => {
     fetch(`/users/${currentUser}/posts`)
   .then(resp => resp.json())
-  .then(posts => setUserPosts(posts))}, [])
+  .then(posts => setUserPosts(posts))}, [postData])
 
   function goHome(){
     navigate("/")
   } 
 
 
-  const displayUserPosts = userPosts.map(post => <Post key={post.id} post={post}/>)
+  const displayUserPosts = userPosts.map(post => <Post key={post.id} post={post} postData={postData} setPostData={setPostData} />)
   
 
 

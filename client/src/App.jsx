@@ -62,7 +62,7 @@ function App() {
 
         <Route path="/create-post" element={<CreatePost postData={postData} setPostData={setPostData}/>} />
 
-        <Route path="/my-profile" element={<UserProfile />} />
+        <Route path="/my-profile" element={<UserProfile postData={postData} setPostData={setPostData}/>} />
       </Routes>
     </div>
   );
