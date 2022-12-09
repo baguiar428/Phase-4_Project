@@ -35,17 +35,9 @@ function NavBar({ isLoggedIn }) {
         <div>
             <div className="flex justify-end">
                 {isLoggedInHome}
-                {/* <button className='font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={login}>Login</button>
-                <button className='font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={signup}>Sign-Up</button> */}
             </div>
         </div>
     )
 }
 
 export default NavBar
-
-            // { isLoggedIn ? 
-            //     <button className='font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={logout}>Logout</button> :
-            //     <button className='font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={login}>Login</button>
-            //     <button className='font-squids m-4 p-2 rounded-lg bg-red-500 hover:bg-green-500' onClick={signup}>Sign-Up</button>
-            // }
